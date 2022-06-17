@@ -1060,6 +1060,7 @@ def train(net, optimizer, criterion, data_loader, epoch, scheduler=None,
         # Save the weights
         if e % save_epoch == 0:
             save_model(net, camel_to_snake(str(net.__class__.__name__)), data_loader.dataset.name, epoch=e, metric=abs(metric))
+    return camel_to_snake(str(net.__class__.__name__)), data_loader.dataset.name
 
 def save_model(model, model_name, dataset_name, **kwargs):
      model_dir = './checkpoints/' + model_name + "/" + dataset_name + "/"
@@ -1107,6 +1108,7 @@ def test(net, img, hyperparams):
 
             indices = [b[1:] for b in batch]
             data = data.to(device)
+            input_shape = data.shape
             output = net(data)
             if isinstance(output, tuple):
                 output = output[0]
@@ -1121,7 +1123,7 @@ def test(net, img, hyperparams):
                     probs[x + w // 2, y + h // 2] += out
                 else:
                     probs[x:x + w, y:y + h] += out
-    return probs
+    return probs, input_shape
 
 def val(net, data_loader, device='cpu', supervision='full'):
 # TODO : fix me using metrics()
