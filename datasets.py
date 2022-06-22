@@ -45,6 +45,21 @@ DATASETS_CONFIG = {
             'img': 'Indian_pines_corrected.mat',
             'gt': 'Indian_pines_gt.mat'
             },
+        'IndianPines2': {
+            'urls': ['http://www.ehu.eus/ccwintco/uploads/c/c4/Indian_pines_gt.mat'],
+            'img': 'Indian_pines_2.mat',
+            'gt': 'Indian_pines_gt.mat'
+            },
+        'IndianPines3': {
+            'urls': ['http://www.ehu.eus/ccwintco/uploads/c/c4/Indian_pines_gt.mat'],
+            'img': 'Indian_pines_3.mat',
+            'gt': 'Indian_pines_gt.mat'
+            },
+        'IndianPines4': {
+            'urls': ['http://www.ehu.eus/ccwintco/uploads/c/c4/Indian_pines_gt.mat'],
+            'img': 'Indian_pines_4.mat',
+            'gt': 'Indian_pines_gt.mat'
+            },
         'Botswana': {
             'urls': ['http://www.ehu.es/ccwintco/uploads/7/72/Botswana.mat',
                      'http://www.ehu.es/ccwintco/uploads/5/58/Botswana_gt.mat'],
@@ -155,6 +170,59 @@ def get_dataset(dataset_name, target_folder="./", datasets=DATASETS_CONFIG):
                         "Stone-Steel-Towers"]
 
         ignored_labels = [0]
+        
+    elif dataset_name == 'IndianPines2':
+        # Load the image
+        img = open_file(folder + 'Indian_pines_2.mat')
+        img = img['indian_pines_2']
+
+        rgb_bands = (43, 21, 11)  # AVIRIS sensor
+
+        gt = open_file(folder + 'Indian_pines_gt.mat')['indian_pines_gt']
+        label_values = ["Undefined", "Alfalfa", "Corn-notill", "Corn-mintill",
+                        "Corn", "Grass-pasture", "Grass-trees",
+                        "Grass-pasture-mowed", "Hay-windrowed", "Oats",
+                        "Soybean-notill", "Soybean-mintill", "Soybean-clean",
+                        "Wheat", "Woods", "Buildings-Grass-Trees-Drives",
+                        "Stone-Steel-Towers"]
+
+        ignored_labels = [0]
+        
+        
+    elif dataset_name == 'IndianPines3':
+        # Load the image
+        img = open_file(folder + 'Indian_pines_3.mat')
+        img = img['indian_pines_3']
+
+        rgb_bands = (43, 21, 11)  # AVIRIS sensor
+
+        gt = open_file(folder + 'Indian_pines_gt.mat')['indian_pines_gt']
+        label_values = ["Undefined", "Alfalfa", "Corn-notill", "Corn-mintill",
+                        "Corn", "Grass-pasture", "Grass-trees",
+                        "Grass-pasture-mowed", "Hay-windrowed", "Oats",
+                        "Soybean-notill", "Soybean-mintill", "Soybean-clean",
+                        "Wheat", "Woods", "Buildings-Grass-Trees-Drives",
+                        "Stone-Steel-Towers"]
+
+        ignored_labels = [0]
+        
+    elif dataset_name == 'IndianPines4':
+        # Load the image
+        img = open_file(folder + 'Indian_pines_4.mat')
+        img = img['indian_pines_4']
+
+        rgb_bands = (43, 21, 11)  # AVIRIS sensor
+
+        gt = open_file(folder + 'Indian_pines_gt.mat')['indian_pines_gt']
+        label_values = ["Undefined", "Alfalfa", "Corn-notill", "Corn-mintill",
+                        "Corn", "Grass-pasture", "Grass-trees",
+                        "Grass-pasture-mowed", "Hay-windrowed", "Oats",
+                        "Soybean-notill", "Soybean-mintill", "Soybean-clean",
+                        "Wheat", "Woods", "Buildings-Grass-Trees-Drives",
+                        "Stone-Steel-Towers"]
+
+        ignored_labels = [0]
+
 
     elif dataset_name == 'Botswana':
         # Load the image
